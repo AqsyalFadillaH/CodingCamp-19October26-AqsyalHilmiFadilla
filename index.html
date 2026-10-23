@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple dashboard for organizing tasks, focus sessions, and favorite links.">
+    <title>Life Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="#" aria-label="Life Dashboard home">
+            <span class="brand-mark">L</span>
+            <span>Life Dashboard</span>
+        </a>
+
+        <button id="theme-toggle" class="icon-button" type="button" aria-label="Switch to dark mode">
+            <span id="theme-icon" aria-hidden="true">☾</span>
+        </button>
+    </header>
+
+    <main class="dashboard">
+        <section class="hero card">
+            <div>
+                <p class="eyebrow" id="date">Loading date...</p>
+                <h1 id="greeting">Good day</h1>
+                <button id="edit-name" class="text-button" type="button">Set your name</button>
+            </div>
+
+            <div class="clock-wrap" aria-live="polite">
+                <p class="clock-label">Local time</p>
+                <p id="clock" class="clock">00:00:00</p>
+            </div>
+        </section>
+
+        <section class="dashboard-grid" aria-label="Dashboard tools">
+            <article class="card timer-card">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Stay on track</p>
+                        <h2>Focus Timer</h2>
+                    </div>
+                    <span class="status-dot" aria-hidden="true"></span>
+                </div>
+
+                <div class="timer-ring">
+                    <span id="timer" aria-live="polite">25:00</span>
+                </div>
+
+                <div class="button-row">
+                    <button id="start-timer" class="button button-primary" type="button">Start</button>
+                    <button id="stop-timer" class="button button-secondary" type="button">Stop</button>
+                    <button id="reset-timer" class="button button-ghost" type="button">Reset</button>
+                </div>
+            </article>
+
+            <article class="card tasks-card">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Today's plan</p>
+                        <h2>To-Do List</h2>
+                    </div>
+                    <span id="task-count" class="count-badge">0 tasks</span>
+                </div>
+
+                <form id="task-form" class="input-group">
+                    <label class="sr-only" for="task-input">New task</label>
+                    <input id="task-input" type="text" maxlength="100" placeholder="What do you want to finish?" autocomplete="off" required>
+                    <button class="button button-primary" type="submit">Add</button>
+                </form>
+
+                <p id="task-message" class="form-message" role="status"></p>
+                <ul id="task-list" class="task-list"></ul>
+                <p id="empty-tasks" class="empty-state">No tasks yet. Add your first task above.</p>
+            </article>
+
+            <article class="card links-card">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">One-click access</p>
+                        <h2>Quick Links</h2>
+                    </div>
+                    <span id="link-count" class="count-badge">0 links</span>
+                </div>
+
+                <form id="link-form" class="link-form">
+                    <div>
+                        <label for="link-name">Website name</label>
+                        <input id="link-name" type="text" maxlength="30" placeholder="Example: Google" required>
+                    </div>
+                    <div>
+                        <label for="link-url">Website URL</label>
+                        <input id="link-url" type="text" placeholder="google.com" required>
+                    </div>
+                    <button class="button button-primary" type="submit">Add Link</button>
+                </form>
+
+                <p id="link-message" class="form-message" role="status"></p>
+                <div id="link-list" class="link-list"></div>
+                <p id="empty-links" class="empty-state">Save your favorite websites here.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        
+    </footer>
+
+    <div id="name-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="name-modal-title" hidden>
+        <div class="modal-card">
+            <h2 id="name-modal-title">What should we call you?</h2>
+            <p>Your name will be saved only in this browser.</p>
+            <form id="name-form">
+                <label class="sr-only" for="name-input">Your name</label>
+                <input id="name-input" type="text" maxlength="30" placeholder="Enter your name" autocomplete="name" required>
+                <div class="button-row modal-actions">
+                    <button id="cancel-name" class="button button-ghost" type="button">Cancel</button>
+                    <button class="button button-primary" type="submit">Save Name</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
